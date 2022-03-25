@@ -13,8 +13,8 @@ const MapPart = () => {
   useEffect(() => {
     setLongitude(place.longitude);
     setLatitude(place.latitude);
-  }, [place]);
-
+  }, [place.longitude]);
+console.log(longitude,latitude);
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_GL_ACCESS_TOKEN;
 
   useEffect(() => {
@@ -22,7 +22,6 @@ const MapPart = () => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v9",
       center: [longitude, latitude],
-
       zoom: 12,
     });
 
@@ -31,7 +30,7 @@ const MapPart = () => {
     new mapboxgl.Marker({ color: "blue" })
       .setLngLat([longitude, latitude])
       .addTo(map);
-  }, [place]);
+  }, [longitude]);
   return (
     <>
       <div id="map" style={{ width: "100%", height: "100vh" }}></div>

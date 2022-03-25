@@ -45,13 +45,10 @@ const SearchPart = () => {
 
 
  const handlerToSetPlace=(place)=>{
-  dispatch(addToPlace(place));
   setPlace(place);
   setDisplayPlace(true);
+  dispatch(addToPlace(place));
   setDisplay(false);
-  
-  
-
  }
 
  const handlerToClose=()=>{
