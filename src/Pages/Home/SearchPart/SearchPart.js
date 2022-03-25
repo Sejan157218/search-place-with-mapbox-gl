@@ -8,7 +8,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import "./SearchPart.css";
-import { addToPlace, fetchPlaces } from "../../../Redux/ApiSlice/ApiSlice";
+import { addToPlace, fetchPlaces,addToLongitude,addToLatitude } from "../../../Redux/ApiSlice/ApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Search = styled("div")(({ theme }) => ({
@@ -39,7 +39,7 @@ const SearchPart = () => {
   // useEffect for data fetch
   useEffect(() => {
     dispatch(fetchPlaces(url));
-  }, [placeName]);
+  }, [url,dispatch]);
 
   const places=(useSelector((state) => state.places.placeData));
 
@@ -48,6 +48,8 @@ const SearchPart = () => {
   setPlace(place);
   setDisplayPlace(true);
   dispatch(addToPlace(place));
+  dispatch(addToLongitude(place.longitude));
+  dispatch(addToLatitude(place.latitude));
   setDisplay(false);
  }
 

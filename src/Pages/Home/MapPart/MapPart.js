@@ -5,23 +5,18 @@ import "./MapPart.css";
 import { useSelector } from "react-redux";
 
 const MapPart = () => {
-  const [longitude, setLongitude] = useState(90.399452);
-  const [latitude, setLatitude] = useState(23.777176);
 
-  const place = useSelector((state) => state.places.place);
+  const longitude = useSelector((state) => state.places.longitude);
+  const latitude = useSelector((state) => state.places.latitude);
 
-  useEffect(() => {
-    setLongitude(place.longitude);
-    setLatitude(place.latitude);
-  }, [place.longitude]);
-console.log(longitude,latitude);
+
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_GL_ACCESS_TOKEN;
 
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v9",
-      center: [longitude, latitude],
+      center: [longitude,latitude],
       zoom: 12,
     });
 
@@ -30,7 +25,7 @@ console.log(longitude,latitude);
     new mapboxgl.Marker({ color: "blue" })
       .setLngLat([longitude, latitude])
       .addTo(map);
-  }, [longitude]);
+  }, [longitude,latitude]);
   return (
     <>
       <div id="map" style={{ width: "100%", height: "100vh" }}></div>
