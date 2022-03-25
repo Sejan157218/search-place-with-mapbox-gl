@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Close from "@mui/icons-material/Close";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import LocationOn from "@mui/icons-material/LocationOn";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import "./SearchPart.css";
